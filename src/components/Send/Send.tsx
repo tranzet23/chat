@@ -11,7 +11,7 @@ const Send = () => {
 
     const OnClickBtnAlert = () => {
         alert(value);
-        setValue('')
+        setValue('Еще?')
     }
     return (
         <div className={styles.sendBlock}>
