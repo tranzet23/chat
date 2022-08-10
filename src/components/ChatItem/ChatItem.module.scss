@@ -1,0 +1,30 @@
+.chatItem{
+  $this: &;
+
+  margin-bottom: 15px;
+
+  &Top {
+    display: flex;
+    gap: 30px;
+  }
+
+  &Time {
+    text-align: left;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 12px;
+    color: #333333;
+
+    margin-top: 10px;
+  }
+
+  &Right {
+    #{$this}Top {
+      flex-direction: row-reverse;
+    }
+
+    #{$this}Time {
+      text-align: right;
+    }
+  }
+}

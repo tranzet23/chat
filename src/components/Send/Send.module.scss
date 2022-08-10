@@ -1,0 +1,51 @@
+.container {
+  border: 1px solid #A5A6F6;
+  border-radius: 10px;
+  margin: 0 30px;
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.sendBlock {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+}
+
+input {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000;
+  max-width: 300px;
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    font-size: 12px;
+    line-height: 14px;
+    color: #DBDBDB;
+  }
+}
+.buttons {
+  display: flex;
+  min-width: 120px;
+  gap: 20px;
+  justify-content: center;
+  align-content: center;
+}
+.button {
+
+  &Submit {
+    background: #5D5FEF;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+  }
+}

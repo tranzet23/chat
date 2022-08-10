@@ -1,0 +1,26 @@
+.chatText {
+  border: 1px solid #A5A6F6;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  max-width: 450px;
+
+  p{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.14px;
+    color: #5D5FEF;
+
+  }
+}
+
+.chatTextFill {
+  background: #7879F1;
+
+  p{
+    color: #fff;
+  }
+}
