@@ -28,3 +28,15 @@
     }
   }
 }
+
+.loginBtn {
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s;
+  text-decoration: none;
+
+
+  &:hover {
+    color: #B7B9FF;
+  }
+}
