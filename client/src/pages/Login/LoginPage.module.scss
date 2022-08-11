@@ -1,0 +1,73 @@
+.loginForm {
+  width: 100%;
+  height: 290px;
+  max-width: 500px;
+  background: #5D5FEF;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  padding: 30px;
+  border-radius: 20px;
+
+
+  input[type="submit"] {
+    background: rgba(235, 30, 54, 1);
+    border: 0;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    color: white;
+    padding: 0.7rem;
+    cursor: pointer;
+  }
+
+  input {
+    background: #fff;
+    border: 0;
+    border-left: 4px solid;
+    border-color: #FF0000;
+    padding: 10px;
+    color: #000;
+
+    &::placeholder {
+      color: #000;
+    }
+
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    outline: 0;
+    background: rgb(255, 255, 255);
+    border-radius: 1.2rem;
+    border-color: transparent;
+  }
+}
+
+.loginContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  background: #1390a9;
+  height: 100vh;
+}
+
+.BackButton {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-decoration: none;
+
+  p{
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+
+
