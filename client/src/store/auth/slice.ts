@@ -7,7 +7,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user") || "null") || null,
     isFetching: false,
     error: null
 }
@@ -20,6 +20,9 @@ export const authSlice = createSlice({
             state.user = null;
             state.isFetching = true;
             state.error = null
+        },
+        loginSuccess: (state, ) => {
+
         }
     }
 });
