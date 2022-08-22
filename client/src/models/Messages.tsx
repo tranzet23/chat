@@ -1,3 +1,5 @@
+import {User} from "./User";
+
 export type Messages = {
     _id: string,
     conversationId: string,
@@ -5,3 +7,5 @@ export type Messages = {
     text: string | number,
     createdAt: string
 }
+
+export type FetchMessage = Pick<Messages, 'text' | 'sender' | 'conversationId'>

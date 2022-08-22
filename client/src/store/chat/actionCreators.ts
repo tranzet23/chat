@@ -2,8 +2,8 @@ import {AppDispatch} from "../index";
 import {Conversations} from "../../models/Conversations";
 import {api} from "../../api";
 import {chatSlice, ChatState} from "./slice";
-import {Messages} from "../../models/Messages";
-import {useContext} from "react";
+import {FetchMessage, Messages} from "../../models/Messages";
+
 
 
 
@@ -18,13 +18,19 @@ export const fetchConversations = (userId: string) => async (dispatch: AppDispat
     }
 }
 
-// нужно сделать запрос на /messages/"convId"
-// получить список текущих сообщений для выбранного чата.
-// сохранить список сообщений в redux
 export const fetchMessages = (convId: string) => async (dispatch: AppDispatch) => {
     try {
         const response = await api.get<Messages[]>('/messages/' + convId);
         dispatch(chatSlice.actions.setMessages(response.data));
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+export const fetchAddMessage = (message: FetchMessage) => async (dispatch: AppDispatch) => {
+    try {
+        const response = await api.post<Messages[]>('/messages/', message);
+        dispatch(chatSlice.actions.addMessages(response.data));
     } catch (e) {
         console.error(e);
     }

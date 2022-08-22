@@ -5,6 +5,7 @@ import Chat from "../../components/Chat/Chat";
 import styles from './ChatPage.module.scss'
 import {useAppDispatch, useAppSelector} from "../../hooks/redux";
 import {fetchConversations, fetchMessages} from "../../store/chat/actionCreators";
+import {chatSlice} from "../../store/chat/slice";
 
 
 const ChatPage = () => {
@@ -15,6 +16,7 @@ const ChatPage = () => {
 
     const onDialogClick = (id: string) => {
         dispatch(fetchMessages(id))
+        dispatch(chatSlice.actions.setCurrentConversation(id))
     }
 
     useEffect(() => {
