@@ -51,6 +51,7 @@ button {
     outline: none;
     cursor: pointer;
     background: transparent;
+    transition: all .3s;
 }
 
 .wrapper {
@@ -71,3 +72,4 @@ p {
     width: 30px;
     margin-top: 10px;
 }
+

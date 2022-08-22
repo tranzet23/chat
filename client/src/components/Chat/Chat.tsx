@@ -7,8 +7,14 @@ import CameraImg from '../../assets/videocam.svg';
 import InfoImg from '../../assets/info.svg';
 import Send from "../Send/Send";
 import Chatroom from "../Chatroom/Chatroom";
+import {useAppSelector} from "../../hooks/redux";
 
-const Chat = () => {
+type Props = {
+    convId?: string
+}
+
+const Chat = ({convId}: Props) => {
+    const {messages} = useAppSelector(state => state.chatReducer);
     return (
         <div className={styles.chatContainer}>
             <div className={styles.top}>
@@ -27,7 +33,7 @@ const Chat = () => {
                     <button><img src={InfoImg} alt=""/></button>
                 </div>
             </div>
-            <Chatroom/>
+            <Chatroom messages={messages}/>
             <Send/>
         </div>
     );

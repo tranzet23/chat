@@ -36,9 +36,10 @@ const UserSchema = new mongoose.Schema(
             type: Array,
             default: [],
         },
-        isAdmin: {
-            type: Boolean,
-            default: false,
+        role: {
+            type: String,
+            enum : ['user','admin'],
+            default: 'user'
         },
         desc: {
             type: String,
@@ -47,6 +48,11 @@ const UserSchema = new mongoose.Schema(
         city: {
             type: String,
             max: 50,
+        },
+        country: {
+            type: String,
+            max: 50,
+            required: true,
         },
         from: {
             type: String,

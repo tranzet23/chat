@@ -1,0 +1,59 @@
+.profile {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+
+  &Btn {
+    background: #5D5FEF;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 130%;
+    color: #fff;
+    margin-top: 10px;
+    max-width: 250px;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      background: #3437ea;
+      transition: all .3s;
+    }
+  }
+  &Block {
+    padding: 15px 15px 12px 15px;
+    border-radius: 20px;
+    background: #333;
+    border: 1px solid #ffffff;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    &:last-child {
+      width: 100%;
+    }
+  }
+
+  &Info {
+    border-bottom: 1px solid #fff;
+    p {
+      color: #fff;
+    }
+  }
+
+
+  &Img {
+
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+  }
+}
+

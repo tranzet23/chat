@@ -4,16 +4,17 @@ import classNames from "classnames";
 
 
 type Props = {
-    variant?: 'fill' | 'default'
+    variant?: 'fill' | 'default';
+    text: string | number,
 }
 
-const ChatText = ({variant = 'default'}: Props) => {
+const ChatText = ({variant = 'default', text}: Props) => {
     const classes = classNames(styles.chatText, {
         [styles.chatTextFill]: variant === 'fill'
     });
     return (
         <div className={classes}>
-            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            <p>{text}</p>
         </div>
     );
 };

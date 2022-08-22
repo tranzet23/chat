@@ -5,36 +5,16 @@ import Search from "../Search/Search";
 import PlusImg from '../../assets/plus.svg';
 import AvatarImg from '../../assets/Avatar.png';
 import PlayImg from '../../assets/Play.svg';
+import {Conversations} from "../../models/Conversations";
+import DialogTab from "../DialogTab/DialogTab";
 
-const DataMessage = [
-    {
-        avatar: AvatarImg,
-        title: "Suporte ADMIN",
-        text: 'Pesquisar chat',
-        timesText: 'Espera',
-        time: '00:31:00',
-        button: PlusImg
-    },
-    {
-        avatar: AvatarImg,
-        title: "Suporte ADMIN",
-        text: 'Pesquisar chat',
-        timesText: 'Espera',
-        time: '00:31:00',
-        button: PlusImg
-    },
-    {
-        avatar: AvatarImg,
-        title: "Suporte ADMIN",
-        text: 'Pesquisar chat',
-        timesText: 'Espera',
-        time: '00:31:00',
-        button: PlayImg
-    },
-]
+type Props = {
+    conversations: Conversations[],
+    onDialogClick: (id: string) => void,
+}
 
+const Messages = ({conversations, onDialogClick}: Props) => {
 
-const Messages = () => {
     return (
         <div className={styles.messages}>
             <div className={styles.messagesContainer}>
@@ -48,24 +28,9 @@ const Messages = () => {
                 </div>
                 <div className={styles.messagesContent}>
                     {
-                        DataMessage.map(({avatar, text, timeText, title, time, button}: any, index) => {
+                        conversations.map(({_id}) => {
                                 return (
-                                    <div key={index} className={styles.messageItem}>
-                                        <div className={styles.messageAvatar}>
-                                            <img src={avatar} alt=""/>
-                                        </div>
-                                        <div className={styles.messageTitle}>
-                                            <p>{title}</p>
-                                            <p>{text}</p>
-                                        </div>
-                                        <div className={styles.messageTimes}>
-                                            <p>{timeText}</p>
-                                            <p>{time}</p>
-                                        </div>
-                                        <button className={styles.buttonPlay}>
-                                            <img src={button} alt=""/>
-                                        </button>
-                                    </div>
+                                   <DialogTab key={_id} id={_id} onClick={onDialogClick}/>
                                 )
                             }
                         )}

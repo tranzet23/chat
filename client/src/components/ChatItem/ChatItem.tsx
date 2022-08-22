@@ -5,11 +5,14 @@ import classNames from "classnames";
 import ChatText from "../ChatText/ChatText";
 import Avatar from "../Avatar/Avatar";
 
+
 type Props = {
-    side?: 'left' | 'right';
+    side?: 'left' | 'right',
+    text: string | number,
+    time: string,
 }
 
-const ChatItem = ({side = 'left'}: Props) => {
+const ChatItem = ({side = 'left', text, time}: Props) => {
 
     const classes = classNames(styles.chatItem, {
         [styles.chatItemRight]: side === 'right'
@@ -19,9 +22,10 @@ const ChatItem = ({side = 'left'}: Props) => {
             <div className={styles.chatItemTop}>
                 <Avatar/>
                 <div>
-                    <ChatText variant={side === 'right' ? 'fill' : 'default'}/>
+                    <ChatText variant={side === 'right' ? 'fill' : 'default'}
+                              text={text}/>
                     <div className={styles.chatItemTime}>
-                        <p>8:00 PM</p>
+                        <p>{time}</p>
                     </div>
                 </div>
             </div>
