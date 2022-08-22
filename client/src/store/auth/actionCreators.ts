@@ -23,7 +23,7 @@ export const fetchRegister = (user: User) => async (dispatch: AppDispatch) => {
      } catch (e) {
         // @ts-ignore
         dispatch(authSlice.actions.registerError(e.message));
-        toast('🦄 Registration error!', {
+        toast('🦄 Ошибка в регистрации!', {
             autoClose: 5000,
             type: 'error'
         })

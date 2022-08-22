@@ -1,16 +1,19 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Conversations} from "../../models/Conversations";
-import {Messages} from "../../models/Messages";
+import {FetchMessage, Messages} from "../../models/Messages";
 
 
 export interface ChatState {
     conversations: Conversations[],
-    messages: Messages[]
+    messages: Messages[],
+    currentConversationId: string
+
 }
 
 const initialState: ChatState = {
     conversations: [],
-    messages: []
+    messages: [],
+    currentConversationId: ''
 }
 
 export const chatSlice = createSlice({
@@ -20,9 +23,16 @@ export const chatSlice = createSlice({
         setConversations: (state, {payload}: PayloadAction<Conversations[]>) => {
             state.conversations = payload
         },
+        setCurrentConversation: (state, {payload}: PayloadAction<string>) => {
+            state.currentConversationId = payload
+        },
         setMessages: (state, {payload}: PayloadAction<Messages[]>) => {
             state.messages = payload
+        },
+        addMessages: (state, {payload}: PayloadAction<Messages[]>) => {
+            state.messages = payload
         }
+
     }
 })
 
