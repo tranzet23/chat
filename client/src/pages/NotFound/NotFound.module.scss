@@ -1,0 +1,29 @@
+.contentCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 80vh;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  h2 {
+    font-size: 120px;
+    color: #3b3ec9;
+    margin: 10px 0;
+  }
+
+  h3 {
+    font-size: 30px;
+    margin: 0;
+  }
+}
+
+div:first-child {
+
+}
