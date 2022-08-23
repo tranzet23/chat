@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Conversations} from "../../models/Conversations";
-import {FetchMessage, Messages} from "../../models/Messages";
+import { Messages} from "../../models/Messages";
 
 
 export interface ChatState {
