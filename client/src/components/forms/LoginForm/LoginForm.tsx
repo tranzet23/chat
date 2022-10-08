@@ -1,14 +1,14 @@
 import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 import {useNavigate} from "react-router-dom";
-import {LoginUser} from "../../models/User";
+import {LoginUser} from "../../../models/User";
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import styles from "./LoginForm.module.scss";
-import {fetchLogin} from "../../store/auth/actionCreators";
+import {fetchLogin} from "../../../store/auth/actionCreators";
 
 
 const LoginForm = () => {
@@ -22,7 +22,7 @@ const LoginForm = () => {
         register,
         handleSubmit,
         reset,
-        formState: {errors},
+        formState: {errors, isValid},
     } = useForm<LoginUser>({
         mode: 'onChange'
     });
@@ -32,7 +32,6 @@ const LoginForm = () => {
         dispatch(fetchLogin(user))
         reset();
     }
-
 
     return (
         <div className={styles.container}>
@@ -82,7 +81,7 @@ const LoginForm = () => {
                     <button
                         type={'submit'}
                         className={styles.btn}
-                        disabled={isFetching}
+                        disabled={!isValid || isFetching}
                     >
                         Войти
                     </button>

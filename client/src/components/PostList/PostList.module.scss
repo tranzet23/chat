@@ -1,0 +1,147 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+
+  &Title {
+    font-weight: bold;
+  }
+
+  button {
+    margin-top: 20px
+  }
+}
+
+.post {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 2px solid #3b3ec9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+
+  &InfoUser {
+    display: flex;
+    align-items: center;
+    gap: 20px
+  }
+
+  &Edit {
+    p {
+      font-size: 30px
+    }
+  }
+
+  &Number {
+    position: absolute;
+    left: 11px;
+    top: 63px;
+  }
+
+  &Btns {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    top: 5px;
+    right: 5px;
+
+    button {
+      margin-top: 0;
+      border-radius: 50%;
+      padding: 5px;
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &ListWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+  }
+
+  &InfoWrap {
+    width: 100%;
+  }
+
+  &Title {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+}
+
+
+.postInfoWrap {
+  padding-top: 0;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+  font-size: 10px
+}
+
+.formPostEdit {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 10px 10px 10px 15px;
+
+    &:focus {
+      border: 1px solid teal;
+      box-shadow: none;
+      transition: all .3s;
+    }
+  }
+
+  .postNameInput {
+    display: none;
+    margin: 5px 0;
+    padding-left: 10px;
+    font-size: 16px;
+    line-height: 130%;
+    font-weight: bold;
+  }
+
+  .postNumber {
+   font-weight: 600;
+  }
+
+.inputTitle {
+  margin-top: 0;
+  font-size: 18px;
+  line-height: 130%;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+
+  &EditMode {
+    input {
+      transition: all .3s;
+      box-shadow: 1px 1px 1px 1px lightgray inset !important;
+      max-width: none;
+
+    }
+
+    .postNameInput {
+      display: block;
+    }
+
+    .postNumber {
+      display: none;
+    }
+  }
+}
+
+.btnWrap {
+  display: flex;
+  gap: 10px
+}
+

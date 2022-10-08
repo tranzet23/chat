@@ -1,24 +1,24 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import Container from "../../components/Container/Container";
+import MyButton from "../../components/UI/button/MyButton";
 
 const Unauthorized = () => {
     const navigate = useNavigate();
-    const goBack = () => navigate('/');
+    const goBack = () => navigate('/login');
 
     return (
-        <div>
-            <div className="justify-content-center">
+            <Container center>
                 <div >
-                    <h1 className="mb-5">Unauthorized</h1>
-                    <p>You do not have access to the requested page.</p>
-                    <div className="flexGrow">
-                        <button  type="button" onClick={goBack}>
-                            Go home
-                        </button>
-                    </div>
+                    <h1 className="mb-5">Вы не авторизованы</h1>
+                    <p>Вы не можете перейти на эту страницу.</p>
+                        <Container center>
+                            <MyButton marginTop type="button" onClick={goBack}>
+                                Go home
+                            </MyButton>
+                        </Container>
                 </div>
-            </div>
-        </div>
+            </Container>
     );
 };
 

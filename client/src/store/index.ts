@@ -1,16 +1,21 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import authReducer, {authKey} from './auth/slice';
 import chatReducer from './chat/slice';
+import userReducer from './profile/slice';
+import postReducer from './post/slice';
 
 
 const rootReducer = combineReducers({
     authReducer,
-    chatReducer
+    chatReducer,
+    userReducer,
+    postReducer
 });
 
 export const setupStore = () => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware()
     })
 }
 

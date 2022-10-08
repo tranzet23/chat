@@ -1,4 +1,14 @@
 .chatroomContainer {
-  padding: 40px 20px 40px 20px;
-  min-height: 600px;
+  padding: 40px 20px 22px 20px;
+  overflow-y: auto;
+  margin-bottom: 100px;
+  height: 60vh;
+}
+
+.chatroomEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
 }

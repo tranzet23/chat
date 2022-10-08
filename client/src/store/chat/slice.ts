@@ -1,19 +1,25 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Conversations} from "../../models/Conversations";
-import { Messages} from "../../models/Messages";
+import { Message} from "../../models/Message";
+import {ConversationUser} from "../../models/ConversationUser";
 
 
 export interface ChatState {
     conversations: Conversations[],
-    messages: Messages[],
-    currentConversationId: string
+    messages: Message[],
+    currentConversation: Conversations | null,
+    arrivalMessage: Message | null,
 
+    conversationsUsers: ConversationUser[]
 }
 
 const initialState: ChatState = {
     conversations: [],
     messages: [],
-    currentConversationId: ''
+    currentConversation: null,
+    arrivalMessage: null,
+
+    conversationsUsers: []
 }
 
 export const chatSlice = createSlice({
@@ -23,16 +29,21 @@ export const chatSlice = createSlice({
         setConversations: (state, {payload}: PayloadAction<Conversations[]>) => {
             state.conversations = payload
         },
-        setCurrentConversation: (state, {payload}: PayloadAction<string>) => {
-            state.currentConversationId = payload
+        setCurrentConversation: (state, {payload}: PayloadAction<Conversations>) => {
+            state.currentConversation = payload
         },
-        setMessages: (state, {payload}: PayloadAction<Messages[]>) => {
+        setMessages: (state, {payload}: PayloadAction<Message[]>) => {
             state.messages = payload
         },
-        addMessages: (state, {payload}: PayloadAction<Messages[]>) => {
-            state.messages = payload
+        addMessage: (state, {payload}: PayloadAction<Message>) => {
+            state.messages.push(payload)
+        },
+        setArrivalMessage: (state, {payload}: PayloadAction<Message>) => {
+            state.arrivalMessage = payload
+        },
+        setConversationsUsers: (state, {payload}: PayloadAction<ConversationUser[]>) => {
+            state.conversationsUsers = payload
         }
-
     }
 })
 

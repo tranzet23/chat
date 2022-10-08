@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+
+  form {
+    width: 100%;
+    border-radius: 16px;
+  }
+}

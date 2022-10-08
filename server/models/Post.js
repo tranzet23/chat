@@ -10,6 +10,14 @@ const PostSchema = new mongoose.Schema(
             type: String,
             max: 500,
         },
+        _id: {
+            type: String,
+            max: 10,
+        },
+        title: {
+            type: String,
+            max: 500,
+        },
         img: {
             type: String,
         },

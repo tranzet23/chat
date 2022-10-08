@@ -2,50 +2,173 @@
   display: flex;
   width: 100%;
   gap: 30px;
+  max-width: 1440px;
+  margin: 0 auto;
 
-  &Btn {
-    background: #5D5FEF;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 14px;
-    line-height: 130%;
-    color: #fff;
-    margin-top: 10px;
-    max-width: 250px;
-    width: 100%;
-    text-decoration: none;
-    text-align: center;
+  &Main {
+    display: flex;
+    background: var(--color-gray);
+    border-radius: 16px;
 
-    &:hover {
-      background: #3437ea;
-      transition: all .3s;
+    .profileBlock:first-child {
+      margin: 10px;
+      border: 1px solid #fff;
+      border-radius: 16px;
     }
   }
+
+  .profileBlockSidebar {
+    button, a {
+      background: var(--color-main);;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 14px;
+      line-height: 130%;
+      color: #fff;
+      max-width: 250px;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+
+      &:hover {
+        background: var(--color-mainHover);
+        transition: all .3s ease-in-out;
+      }
+    }
+  }
+
+
+  &Information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   &Block {
-    padding: 15px 15px 12px 15px;
-    border-radius: 20px;
-    background: #333;
-    border: 1px solid #ffffff;
+    position: relative;
+    padding: 15px 15px 30px 15px;
     height: max-content;
     display: flex;
     flex-direction: column;
     gap: 10px;
 
+    &Title {
+      padding-top: 5px;
+    }
+
+    .modal {
+
+      div {
+        padding: 15px;
+        max-width: none;
+        width: auto;
+        margin: 20px;
+        height: max-content;
+      }
+
+    }
 
     &:last-child {
       width: 100%;
+    }
+
+    button {
+      color: #fff;
+      border: 1px solid var(--color-main);
+      background: var(--color-main);
+
+      &:hover {
+        transition: all .3s ease-in-out;
+        background: var(--color-mainHover);
+      }
+    }
+
+    input {
+      max-width: none;
+      width: 100%;
+    }
+
+    &Title {
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    &BtnCancel {
+      border: 1px solid red;
+    }
+
+
+    &Edit {
+      input {
+        pointer-events: visible !important;
+
+        &:hover {
+          background: #fff;
+          color: #000;
+          transition: all .3s ease-in-out;
+        }
+
+        &:focus {
+          background: #fff;
+          color: #000;
+          transition: all .3s ease-in;
+          border: 2px solid var(--color-main);
+        }
+      }
     }
   }
 
   &Info {
     border-bottom: 1px solid #fff;
+    padding: 5px 0;
+
+    span {
+      color: red;
+    }
+
+    &Id {
+      position: absolute;
+      right: 0px;
+      top: 7px;
+      border-bottom: transparent;
+      min-width: 230px;
+
+      display: flex;
+      align-items: center;
+
+      div {
+        font-size: 14px !important;
+        margin-bottom: 0;
+      }
+
+      input {
+        font-size: 14px !important;
+        background: transparent !important;
+        color: #fff !important;
+        pointer-events: none !important;
+      }
+    }
+
     p {
       color: #fff;
+      font-size: 18px;
+      line-height: 130%
+    }
+
+    input {
+      color: #fff;
+      font-size: 18px;
+      line-height: 130%;
+      background: transparent;
+      pointer-events: none;
+      padding-left: 15px;
+      border: none
     }
   }
 
 
   &Img {
+    cursor: pointer;
 
     img {
       width: 250px;
@@ -55,5 +178,55 @@
     }
 
   }
+
+  form {
+    display: flex;
+    width: 100%;
+  }
+
+  &Upload {
+    color: #fff;
+
+    input {
+      margin-top: 10px;
+      color: #fff;
+      width: 100%;
+
+      &:hover {
+        background: transparent;
+        color: #fff;
+      }
+    }
+  }
 }
 
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  button:last-child {
+    border: 1px solid #A5A6F6;
+    background-color: teal
+  }
+}
+
+.profileSelect {
+  background: transparent;
+
+  div:first-child {
+    background-color: transparent
+  }
+}
+
+
+.profileBlockBgGray {
+  background: var(--color-gray);
+}
+
+.btnShow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

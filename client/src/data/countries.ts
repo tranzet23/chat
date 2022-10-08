@@ -1,4 +1,4 @@
-import {IOption} from "../components/RegisterForm/RegisterForm";
+import {IOption} from "../components/forms/RegisterForm/RegisterForm";
 
 export const countries: IOption[] = [
     {
