@@ -6,7 +6,6 @@ const path = require('path');
 const transliterate = require('../utils/cyrToLat');
 
 const PATH_TO_IMAGES = path.join(__dirname, '../assets/images/');
-
 /*Download the base64 image in the server and returns the filename and path of image.*/
 function saveImage(baseImage, username) {
     //Find extension of file
