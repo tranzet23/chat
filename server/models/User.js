@@ -45,7 +45,15 @@ const UserSchema = new mongoose.Schema(
             type: String,
             max: 50,
         },
+        age: {
+            type: String,
+            max: 50,
+        },
         city: {
+            type: String,
+            max: 50,
+        },
+        linkToSocial: {
             type: String,
             max: 50,
         },

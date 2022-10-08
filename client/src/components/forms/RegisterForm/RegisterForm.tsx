@@ -2,10 +2,10 @@ import React from 'react';
 import {SubmitHandler, useForm, Controller} from 'react-hook-form';
 import ReactSelect from 'react-select';
 
-import {countries} from "../../data/countries";
-import {fetchRegister} from "../../store/auth/actionCreators";
-import {User} from "../../models/User";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {countries} from "../../../data/countries";
+import {fetchRegister} from "../../../store/auth/actionCreators";
+import {RegisterUser, User} from "../../../models/User";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux";
 
 import styles from './RegisterForm.module.scss';
 import {ToastContainer} from 'react-toastify';
@@ -13,59 +13,37 @@ import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
 
 
-
 export interface IOption {
     value: string,
     label: string
 }
 
-// type LoginUser = Omit<User, 'country' | 'username'>;
+export const getValueSelect = (value: string) => value ? countries.find((option) => option.value === value) : '';
 
-const getValueSelect = (value: string) => value ? countries.find((option) => option.value === value) : '';
 
 
 const RegisterForm = () => {
+    const {user} = useAppSelector(state => state.authReducer)
     const dispatch = useAppDispatch();
     const {isFetching} = useAppSelector(state => state.authReducer);
     let navigate = useNavigate();
 
 
-    const {
-        register,
-        handleSubmit,
-        formState: {errors},
-        reset,
-        watch,
-        setValue,
-        control
-    } = useForm<User>({
+    const {register, handleSubmit, formState: {errors}, reset, setValue, control} = useForm<RegisterUser>({
         mode: 'onChange'
     });
 
-    const onSubmit: SubmitHandler<User> = (user) => {
-        dispatch(fetchRegister(user))
+    const onSubmit: SubmitHandler<RegisterUser> = (dataUser) => {
+        dispatch(fetchRegister(dataUser))
         reset();
-        navigate('/', { replace: true });
+        navigate(`/`, {replace: true});
     }
 
-    // React.useEffect(() => {
-    //     const subscription = watch((value, {name, type}) =>
-    //         console.log(value, name, type));
-    //     return () => subscription.unsubscribe();
-    // }, [watch]);
 
     return (
         <div className={styles.container}>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover/>
+            <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false}
+                            newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover/>
 
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
@@ -79,7 +57,6 @@ const RegisterForm = () => {
                     <span className={styles.error}>Необходимо заполнить</span>}
                 {errors.username && errors.username.type === "minLength" &&
                     <span className={styles.error}>Минимальное число символов 4</span>}
-
 
                 <input
                     {...register('email', {
@@ -139,9 +116,7 @@ const RegisterForm = () => {
                     >
                         Зарегестрироваться
                     </button>
-
                 </div>
-
             </form>
             {/*  /TODO/ TODO: пример заполнения при клике*/}
             <div className={styles.bntExampleWrapper}>

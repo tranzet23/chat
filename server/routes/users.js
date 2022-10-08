@@ -1,11 +1,44 @@
 const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const fs = require('fs');
+const path = require('path');
+const transliterate = require('../utils/cyrToLat');
+
+const PATH_TO_IMAGES = path.join(__dirname, '../assets/images/');
+
+/*Download the base64 image in the server and returns the filename and path of image.*/
+function saveImage(baseImage, username) {
+    //Find extension of file
+    const ext = baseImage.substring(baseImage.indexOf("/")+1, baseImage.indexOf(";base64"));
+    const fileType = baseImage.substring("data:".length,baseImage.indexOf("/"));
+    //Forming regex to extract base64 data of file.
+    const regex = new RegExp(`^data:${fileType}\/${ext};base64,`, 'gi');
+    //Extract base64 data.
+    const base64Data = baseImage.replace(regex, "");
+    const filename = `${transliterate(username)}_${Date.now()}.${ext}`;
+
+    fs.writeFileSync(PATH_TO_IMAGES+filename, base64Data, 'base64');
+    return filename;
+}
 
 //update user
 router.put("/:id", async (req, res) => {
-    //TODO: пофиксить для админов
     if (req.body.userId === req.params.id || req.body.isAdmin) {
+        if (req.body.profilePicture) {
+            const userTest = await User.findById(req.params.id);
+            const { profilePicture } = userTest._doc;
+
+            if (req.body.profilePicture !== profilePicture) {
+                req.body.profilePicture = saveImage(req.body.profilePicture, req.body.username);
+
+                const profilePictureCondition = typeof profilePicture === 'string'
+                    && profilePicture.length > 0;
+                if (profilePictureCondition && fs.existsSync(PATH_TO_IMAGES+profilePicture)) {
+                    fs.unlinkSync(PATH_TO_IMAGES+profilePicture);
+                }
+            }
+        }
         if (req.body.password) {
             try {
                 const salt = await bcrypt.genSalt(10);
@@ -79,8 +112,8 @@ router.get("/friends/:userId", async (req, res) => {
         );
         let friendList = [];
         friends.map((friend) => {
-            const { _id, username, profilePicture } = friend;
-            friendList.push({ _id, username, profilePicture });
+            const { _id, username, profilePicture, country } = friend;
+            friendList.push({ _id, username, profilePicture, country });
         });
         res.status(200).json(friendList)
     } catch (err) {

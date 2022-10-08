@@ -1,0 +1,37 @@
+.myBtn {
+    padding: 5px 15px;
+    color: teal;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid teal;
+    cursor: pointer;
+    width: max-content;
+
+    &:hover {
+        background-color: teal;
+        color: white;
+    }
+
+    &Remove {
+        border: 1px solid #981d1d;
+        color: #981d1d;
+
+        &:hover {
+            background: #981d1d;
+            color: white;
+        }
+    }
+
+    &NoRadius {
+        border: none;
+    }
+    &Hover {
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    &MarginT {
+        margin-top: 10px;
+    }
+}

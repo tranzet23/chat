@@ -20,6 +20,8 @@
       font-size: 16px;
       border: none;
       padding-left: 15px;
+
+      color: #fff;
     }
 
     .bntSubmitWrapper {
@@ -33,7 +35,7 @@
   }
 }
   .btn {
-    background: #5D5FEF;
+    background: var(--color-main);
     padding: 10px;
     color: #fff;
     border-radius: 10px;

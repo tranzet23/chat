@@ -1,6 +1,27 @@
 .container {
-  max-width: 1440%;
+  max-width: 1440px;
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;
+
+  &AllCenter {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Sidebar {
+    max-width: 300px;
+    margin: 0;
+  }
+
+  &Flex {
+    background: #fef6f6;
+    display: flex;
+    gap: 30px;
+    height: 100%;
+    padding: 50px 25px;
+  }
 }
+

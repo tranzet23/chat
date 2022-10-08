@@ -8,8 +8,6 @@ const GuestRoute = () => {
     const location:any = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    console.log(user)
-
     return user !== null ? <Navigate to={from} /> : <Outlet />;
 };
 

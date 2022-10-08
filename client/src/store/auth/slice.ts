@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { User} from "../../models/User";
-import {Conversations} from "../../models/Conversations";
+
 
 interface AuthState {
     user: User | null,
@@ -8,14 +8,12 @@ interface AuthState {
     error: string | null
 }
 
-
-
-
 const initialState: AuthState = {
     user: JSON.parse(localStorage.getItem("user") || "null") || null,
     isFetching: false,
     error: null
 }
+
 
 
 export const authSlice = createSlice({
@@ -54,13 +52,18 @@ export const authSlice = createSlice({
         },
         fetchLogout: (state) => {
             state.user = null;
-            state.isFetching = true;
+            state.isFetching = false;
             state.error = null
         },
         profileLogout: (state) => {
             state.user = null;
             state.isFetching = false;
             state.error = null
+        },
+        replaceAuthUser: (state, { payload }: PayloadAction<User>) => {
+            const user = { ...state.user, ...payload }
+            localStorage.setItem("user", JSON.stringify(user));
+            state.user = user;
         }
     }
 });
